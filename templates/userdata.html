@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+index
+{% endblock %}
+{% block main %}
+<body> 
+    <style>
+        table{
+            width: calc(80%);
+        }
+        td{
+            padding:5px;
+    
+        }
+    </style>
+    {% if session['user'] == 'admin' %}
+        {% if data %}
+            <div>
+                <table border='1'>
+                    <thead> 
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Branch</th>
+                        <th>Batch</th>
+                        <th>Attendance</th>
+                        <th>Created At</th>
+                    </thead>
+                    <tbody>
+                        {% for u in data %}
+                        <tr>
+                            <td>{{u['Id']}}</td>
+                            <td>{{u['Name']}}</td>
+                            <td>{{u['Branch']}}</td>
+                            <td>{{u['Batch']}}</td>
+                            <td>{{u['Attendance']}}</td>
+                            <td>{{u['created_at']}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+
+            <h1>No data</h1>
+    
+        {% endif %}
+
+
+
+    {% endif %}
+</body>
+
+</html>
+{%endblock%}
